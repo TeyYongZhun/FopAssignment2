@@ -43,7 +43,7 @@ public class Main {
         student.enroll(wix1002);
         student.enroll(wix1003);
 
-        // 4. DISPLAY SCHEDULE
+        // 4. DISPLAY SUCCESSFUL ENROLMENTS
         System.out.println("\n----TEST 3: CURRENT Successful Enrolment Courses----");
         student.displayReg();
 
