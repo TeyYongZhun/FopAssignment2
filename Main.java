@@ -1,50 +1,63 @@
-public class Main{
-    public static void main(String[] args) {
-        System.out.println("=== UNIVERSITY REGISTRATION SYSTEM ===\n");
+public class Main {
 
-        // 1. Create Courses
+    public static void main(String[] args) {
+        System.out.println("----UNIVERSITY REGISTRATION SYSTEM BOOTING----");
+
+        // 1. DATA SETUP
         Course wix1001 = new Course("WIX1001", "Computing Mathematics", 30);
         Course wix1002 = new Course("WIX1002", "Fundamentals of Programming", 30);
-        Course wix1003 = new Course("WIX1003", "Computer System and Organisation", 2); // Small capacity for testing
+        Course wix1003 = new Course("WIX1003", "Computer System and Organisation", 2); 
 
-        // Add Prerequisite: Must have WIX1001 to take WIX1002
+        // Define Logic: WIX1002 requires WIX1001
         wix1002.addPrerequisite(wix1001);
 
-        // 2. Create Users (Student and Admin)
-        // Note: No major or GPA in Student constructor now
-        Student student = new Student("Lily", "25008293", "25008293@siswa365.edu.my");
-        Admin admin = new Admin("System Admin", "AI102332", "admin@siswa365.edu.my   ", "IT Department");
+        // Create Users
+        Student student = new Student("Joven Tey", "25008293", "25008293@siswa.edu.my", "Artificial Intelligence");
+        Admin admin = new Admin("System Admin", "AI102332", "admin@siswa.edu.my", "IT Department");
 
-        // 3. Display User Info
+        System.out.println(">> System initialized. Courses and Users loaded.");
+
+        // 2. TEST USER PROFILES
+        System.out.println("\n----TEST 1: DISPLAY USER PROFILES----\n");
+        
+        System.out.println("[Student Profile]");
         student.displayInfo();
-        admin.displayInfo(); // Satisfies "2 subclasses" requirement
+        
+        System.out.println("\n[Admin Profile]");
+        admin.displayInfo(); 
 
-        System.out.println("----------------------------------------");
+        // 3. TEST ENROLLMENT LOGIC
+        System.out.println("\n----TEST 2: ENROLLMENT LOGIC----\n");
 
-        // 4. SCENARIO: Enroll
-        System.out.println(">> Attempt: Enroll in Computing Mathematics (WIX1001)");
-        // This should FAIL because Alice doesn't have WIX1001 yet
+        // Scenario A: Prerequisite Failure
+        System.out.println(">> Attempt 1: Enroll in WIX1002 (Prereq: WIX1001)");
+        System.out.println("   (Expected: FAIL - Missing Prerequisite)");
         student.enroll(wix1002); 
 
-        System.out.println("\n>> Attempt: Enroll in Computing Mathematics (WIX1001)");
-        // This should SUCCEED
+        // Scenario B: Success Chain
+        System.out.println("\n>> Attempt 2: Enroll in WIX1001");
+        System.out.println("   (Expected: SUCCESS)");
         student.enroll(wix1001);
-        System.out.println("\n>> Attempt: Enroll in Fundamentals of Programming (WIX1002)");
-        // This should SUCCEED now (because Alice has WIX1001)
+
+        System.out.println("\n>> Attempt 3: Enroll in WIX1002 (Prereq now met)");
+        System.out.println("   (Expected: SUCCESS)");
         student.enroll(wix1002);
 
-        System.out.println("\n>> Attempt: Enroll in Computer System and Organisation(WIX1003)");
+        System.out.println("\n>> Attempt 4: Enroll in WIX1003");
+        System.out.println("   (Expected: SUCCESS)");
         student.enroll(wix1003);
 
-        // 5. Display Schedule
-        student.displaySchedule();
+        // 4. DISPLAY SCHEDULE
+        System.out.println("\n----TEST 3: CURRENT Successful Enrolment Courses----\n");
+        student.displayReg();
 
-        // 6. SCENARIO: Drop
-        System.out.println("\n----------------------------------------");
+        // 5. TEST DROPPING COURSE
+        System.out.println("\n----TEST 4: DROP COURSE LOGIC----\n");
+        
         System.out.println(">> Action: Dropping Computing Mathematics (WIX1001)");
         student.drop(wix1001);
 
-        // 7. Final Schedule Display
-        student.displaySchedule();
+        System.out.println("\n[Updated Successful Enrolment Courses]");
+        student.displayReg();
     }
 }

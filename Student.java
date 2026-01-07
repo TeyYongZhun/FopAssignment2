@@ -1,10 +1,12 @@
 public class Student extends Person {
     private Registration[] registrations; 
     private int regCount; 
+    private String major;
 
     // Constructor 
-    public Student(String name, String id, String email) {
+    public Student(String name, String id, String email, String major) {
         super(name, id, email);
+        this.major = major;
         this.registrations = new Registration[10]; // Max 10 courses
         this.regCount = 0;
     }
@@ -85,8 +87,8 @@ public class Student extends Person {
     }
 
     // Method 3: Display
-    public void displaySchedule() {
-        System.out.println("\n--- Schedule for " + getName() + " ---");
+    public void displayReg() {
+        System.out.println("\n--- Courses enrolled for " + getName() + " ---");
         if (regCount == 0) {
             System.out.println("No courses registered.");
         } else {
@@ -99,6 +101,6 @@ public class Student extends Person {
     @Override
     public void displayInfo() {
         super.displayInfo();
-        System.out.println("Role: Student");
+        System.out.println("Role: Student | Major: " + major);
     }
 }
