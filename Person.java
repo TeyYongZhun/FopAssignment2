@@ -14,6 +14,8 @@ public class Person {
     }
 
     public void displayInfo() {
-        System.out.println("User: " + name + " | ID: " + id);
+        System.out.println("User: " + name);
+        System.out.println("ID: " + id);
+        System.out.println("Email: " + email);
     }
 }

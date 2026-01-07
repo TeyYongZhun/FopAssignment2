@@ -18,6 +18,7 @@ public class Admin extends Person {
     @Override
     public void displayInfo() {
         super.displayInfo();
-        System.out.println("Role: Admin | Dept: " + department);
+        System.out.println("Role: Admin");
+        System.out.println("Department: " + department);
     }
 }
