@@ -2,16 +2,16 @@ public class Student extends Person {
     private Registration[] registrations; 
     private int regCount; 
     private String major;
+    private int totalEnrollmentAttempts; 
 
-    // Constructor 
     public Student(String name, String id, String email, String major) {
         super(name, id, email);
         this.major = major;
-        this.registrations = new Registration[10]; // Max 10 courses
+        this.registrations = new Registration[10]; 
         this.regCount = 0;
+        this.totalEnrollmentAttempts = 0; // <--- Initialize to 0
     }
 
-    // Helper: Check if student has registered for a specific course
     private boolean hasRegisteredFor(Course targetCourse) {
         for (int i = 0; i < regCount; i++) {
             if (registrations[i].getCourse() == targetCourse) {
@@ -21,7 +21,6 @@ public class Student extends Person {
         return false;
     }
 
-    // Method 1: Enroll
     public void enroll(Course course) {
         // 1. Check Array Limit
         if (regCount >= registrations.length) {
@@ -38,7 +37,6 @@ public class Student extends Person {
         // 3. Check Prerequisites
         Course[] prereqs = course.getPrerequisites();
         for (int i = 0; i < course.getPrereqCount(); i++) {
-            // Logic: Must be currently registered for the prerequisite
             if (!hasRegisteredFor(prereqs[i])) {
                 System.out.println("Error: Cannot enroll in " + course.getCourseName() 
                     + ". Missing prerequisite: " + prereqs[i].getCourseName());
@@ -50,8 +48,9 @@ public class Student extends Person {
         if (hasRegisteredFor(course)) {
             System.out.println("Already registered for " + course.getCourseName());
         } else {
-            // Add registration
-            String regID = "R" + (regCount + 1);
+            totalEnrollmentAttempts++; // Always goes up (1, 2, 3...)
+            String regID = "R" + totalEnrollmentAttempts; 
+            
             registrations[regCount] = new Registration(regID, course);
             regCount++; 
             course.addStudent();
@@ -59,11 +58,8 @@ public class Student extends Person {
         }
     }
 
-    // Method 2: Drop
     public void drop(Course course) {
         int index = -1;
-        
-        // Find course index
         for (int i = 0; i < regCount; i++) {
             if (registrations[i].getCourse() == course) {
                 index = i;
@@ -72,12 +68,11 @@ public class Student extends Person {
         }
 
         if (index != -1) {
-            // Shift elements left to remove gap
             for (int i = index; i < regCount - 1; i++) {
                 registrations[i] = registrations[i + 1];
             }
             registrations[regCount - 1] = null;
-            regCount--;
+            regCount--; // We decrease the array count, BUT NOT totalEnrollmentAttempts
             
             course.removeStudent();
             System.out.println("Success: Dropped " + course.getCourseName());
@@ -86,7 +81,6 @@ public class Student extends Person {
         }
     }
 
-    // Method 3: Display
     public void displayReg() {
         System.out.println("\n--- Courses enrolled for " + getName() + " ---");
         if (regCount == 0) {
