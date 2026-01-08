@@ -14,7 +14,7 @@ public class Main {
 
         // Create Users
         Student student1 = new Student("Joven Tey", "25008293", "25008293@siswa.edu.my", "Artificial Intelligence", "Sem 1");
-        Student student2 = new Student("Ali", "25008294", "25008294@siswa.edu.my", "Artificial Intelligence", "Sem 2");
+        Student student2 = new Student("Ali", "25008294", "25008294@siswa.edu.my", "Artificial Intelligence", "Sem 1");
         Admin admin = new Admin("Staff UM", "AI102332", "admin@siswa.edu.my", "IT Department");
 
         System.out.println(">> System initialized. Courses and Users loaded.");
@@ -29,6 +29,8 @@ public class Main {
         
         System.out.println("[Student Profile]");
         student1.displayInfo();
+        System.out.println("");
+        student2.displayInfo();
         
         System.out.println("\n[Admin Profile]");
         admin.displayInfo(); 
@@ -65,15 +67,13 @@ public class Main {
         // 6. TEST ADMIN ADDING/REMOVING COURSES
         System.out.println("\n----TEST 5: ADMIN MANAGING STUDENT COURSES----\n");
 
-        // Admin adds a course (WIX1001) for the student
+        // Admin adds a course (WIX1001) for the student1
         admin.addStudentCourse(student1, wix1001);
-
-        // Admin deletes a course (WIX1003) for the student
-        // (Note: Student must be enrolled in WIX1003 first for this to find it, 
-        // effectively testing the logic we built in previous steps)
-        admin.deleteStudentCourse(student1, wix1003);
+        // Admin deletes a course (WIX1003) for the student2
+        admin.deleteStudentCourse(student2, wix1003);
 
         System.out.println("\n[Final Course List for " + student1.getName() + "]");
         student1.displayReg();
+        student2.displayReg();
     }
 }
