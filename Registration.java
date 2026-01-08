@@ -14,7 +14,7 @@ public class Registration {
     }
 
     public String getSemester() {
-        return status;
+        return semester;
     }
 
     public String getStatus() {
