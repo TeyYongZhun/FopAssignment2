@@ -2,14 +2,12 @@ public class Student extends Person {
     private Registration[] registrations; 
     private int regCount; 
     private String major;
-    private int totalEnrollmentAttempts; 
 
     public Student(String name, String id, String email, String major) {
         super(name, id, email);
         this.major = major;
         this.registrations = new Registration[10]; 
         this.regCount = 0;
-        this.totalEnrollmentAttempts = 0; // <--- Initialize to 0
     }
 
     private boolean hasRegisteredFor(Course targetCourse) {
@@ -48,10 +46,7 @@ public class Student extends Person {
         if (hasRegisteredFor(course)) {
             System.out.println("Already registered for " + course.getCourseName());
         } else {
-            totalEnrollmentAttempts++; // Always goes up (1, 2, 3...)
-            String regID = "R" + totalEnrollmentAttempts; 
-            
-            registrations[regCount] = new Registration(regID, course);
+            registrations[regCount] = new Registration(course);
             regCount++; 
             course.addStudent();
             System.out.println("Success: Enrolled in " + course.getCourseName());

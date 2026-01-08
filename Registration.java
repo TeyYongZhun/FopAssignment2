@@ -1,10 +1,10 @@
 public class Registration {
-    private String regId;
+    private String semester;
     private Course course; 
     private String status;
 
-    public Registration(String regId, Course course) {
-        this.regId = regId;
+    public Registration(Course course) {
+        this.semester = "Sem 1";
         this.course = course;
         this.status = "Active";
     }
@@ -13,8 +13,16 @@ public class Registration {
         return course;
     }
 
+    public String getSemester() {
+        return status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
-        return "RegID: " + regId + " | Status: " + status + " | " + course.toString();
+        return "Semester: " + semester + " | Status: " + status + " | " + course.toString();
     }
 }
