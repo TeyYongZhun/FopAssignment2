@@ -3,8 +3,8 @@ public class Registration {
     private Course course; 
     private String status;
 
-    public Registration(Course course) {
-        this.semester = "Sem 1";
+    public Registration(Course course, String semester) {
+        this.semester = semester;
         this.course = course;
         this.status = "Active";
     }

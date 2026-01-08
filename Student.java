@@ -2,10 +2,12 @@ public class Student extends Person {
     private Registration[] registrations; 
     private int regCount; 
     private String major;
+    private String semester;
 
-    public Student(String name, String id, String email, String major) {
+    public Student(String name, String id, String email, String major, String semester) {
         super(name, id, email);
         this.major = major;
+        this.semester = semester;
         this.registrations = new Registration[10]; 
         this.regCount = 0;
     }
@@ -46,7 +48,7 @@ public class Student extends Person {
         if (hasRegisteredFor(course)) {
             System.out.println("Already registered for " + course.getCourseName());
         } else {
-            registrations[regCount] = new Registration(course);
+            registrations[regCount] = new Registration(course, semester);
             regCount++; 
             course.addStudent();
             System.out.println("Success: Enrolled in " + course.getCourseName());

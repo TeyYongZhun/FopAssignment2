@@ -13,8 +13,8 @@ public class Main {
         wix1003.addPrerequisite(wix1002);
 
         // Create Users
-        Student student1 = new Student("Joven Tey", "25008293", "25008293@siswa.edu.my", "Artificial Intelligence");
-        Student student2 = new Student("Ali", "25008294", "25008294@siswa.edu.my", "Artificial Intelligence");
+        Student student1 = new Student("Joven Tey", "25008293", "25008293@siswa.edu.my", "Artificial Intelligence", "Sem 1");
+        Student student2 = new Student("Ali", "25008294", "25008294@siswa.edu.my", "Artificial Intelligence", "Sem 2");
         Admin admin = new Admin("Staff UM", "AI102332", "admin@siswa.edu.my", "IT Department");
 
         System.out.println(">> System initialized. Courses and Users loaded.");
