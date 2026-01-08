@@ -14,10 +14,10 @@ public class Main {
 
         // Create Users
         Student student1 = new Student("Joven Tey", "25008293", "25008293@siswa.edu.my", "Artificial Intelligence", "Sem 1");
-        Student student2 = new Student("Ali", "25008294", "25008294@siswa.edu.my", "Artificial Intelligence", "Sem 1");
-        Student student3 = new Student("Bala", "25008295", "25008295@siswa.edu.my", "Artificial Intelligence", "Sem 1");
+        Student student2 = new Student("Ali", "25008294", "25008294@siswa.edu.my", "Information System", "Sem 1");
+        Student student3 = new Student("Bala", "25008295", "25008295@siswa.edu.my", "Software Engineering", "Sem 1");
         Admin admin1 = new Admin("Staff Engineering UM", "AI102330", "adminEng@siswa.edu.my", "Engineering Department",1);
-        Admin admin = new Admin("Staff FSKTM UM", "AI102332", "adminFSKTM@siswa.edu.my", "IT Department",2);
+        Admin admin2 = new Admin("Staff FSKTM UM", "AI102332", "adminFSKTM@siswa.edu.my", "IT Department",2);
 
         System.out.println(">> System initialized. Courses and Users loaded.");
 
@@ -37,7 +37,9 @@ public class Main {
         student3.displayInfo();
         
         System.out.println("\n[Admin Profile]");
-        admin.displayInfo(); 
+        admin1.displayInfo(); 
+        System.out.println("");
+        admin2.displayInfo();
 
         // 3. TEST ENROLLMENT LOGIC
         System.out.println("\n----TEST 2: ENROLLMENT LOGIC----\n");
@@ -78,9 +80,9 @@ public class Main {
         System.out.println("\n----TEST 5: ADMIN MANAGING STUDENT COURSES----\n");
 
         admin1.addStudentCourse(student3, wix1003);
-        admin.addStudentCourse(student1, wix1001);
-        admin.deleteStudentCourse(student2, wix1003);
-        admin.addStudentCourse(student3, wix1003);
+        admin2.addStudentCourse(student1, wix1001);
+        admin2.deleteStudentCourse(student2, wix1003);
+        admin2.addStudentCourse(student3, wix1003);
 
 
         System.out.println("\n[Final Course List for Students]");
