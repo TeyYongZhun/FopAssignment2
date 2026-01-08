@@ -30,11 +30,6 @@ public class Admin extends Person {
         }
     }
 
-    public void revokeAccess() {
-        this.accessGranted = false;
-        System.out.println("Access revoked for admin: " + getName());
-    }
-
     @Override
     public void displayInfo() {
         super.displayInfo();
