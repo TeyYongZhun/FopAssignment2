@@ -72,7 +72,7 @@ public class Main {
         // Admin deletes a course (WIX1003) for the student2
         admin.deleteStudentCourse(student2, wix1003);
 
-        System.out.println("\n[Final Course List for " + student1.getName() + "]");
+        System.out.println("\n[Final Course List for Students]");
         student1.displayReg();
         student2.displayReg();
     }
