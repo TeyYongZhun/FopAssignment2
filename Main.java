@@ -6,7 +6,7 @@ public class Main {
         // 1. DATA SETUP
         Course wix1001 = new Course("WIX1001", "Computing Mathematics", 30);
         Course wix1002 = new Course("WIX1002", "Fundamentals of Programming", 30);
-        Course wix1003 = new Course("WIX1003", "Computer System and Organisation", 1); 
+        Course wix1003 = new Course("WIX1003", "Computer System and Organisation", 2); 
 
         // Define Logic: WIX1002 requires WIX1001
         wix1002.addPrerequisite(wix1001);
@@ -15,6 +15,7 @@ public class Main {
         // Create Users
         Student student1 = new Student("Joven Tey", "25008293", "25008293@siswa.edu.my", "Artificial Intelligence", "Sem 1");
         Student student2 = new Student("Ali", "25008294", "25008294@siswa.edu.my", "Artificial Intelligence", "Sem 1");
+        Student student3 = new Student("Bala", "25008295", "25008295@siswa.edu.my", "Artificial Intelligence", "Sem 1");
         Admin admin = new Admin("Staff UM", "AI102332", "admin@siswa.edu.my", "IT Department");
 
         System.out.println(">> System initialized. Courses and Users loaded.");
@@ -31,6 +32,8 @@ public class Main {
         student1.displayInfo();
         System.out.println("");
         student2.displayInfo();
+        System.out.println("");
+        student3.displayInfo();
         
         System.out.println("\n[Admin Profile]");
         admin.displayInfo(); 
@@ -51,11 +54,17 @@ public class Main {
         student2.enroll(wix1001);
         student2.enroll(wix1002);
         student2.enroll(wix1003);
+        // Scenario C: Course Full
+        System.out.println("\n[Student3 Enrolling...]");
+        student3.enroll(wix1001);
+        student3.enroll(wix1002);
+        student3.enroll(wix1003); // Should fail due to capacity
 
         // 4. DISPLAY SUCCESSFUL ENROLMENTS
         System.out.println("\n----TEST 3: CURRENT Successful Enrolment Courses----");
         student1.displayReg();
         student2.displayReg();
+        student3.displayReg();
 
         // 5. TEST DROPPING COURSE
         System.out.println("\n----TEST 4: DROP COURSE LOGIC----\n");
@@ -67,13 +76,14 @@ public class Main {
         // 6. TEST ADMIN ADDING/REMOVING COURSES
         System.out.println("\n----TEST 5: ADMIN MANAGING STUDENT COURSES----\n");
 
-        // Admin adds a course (WIX1001) for the student1
         admin.addStudentCourse(student1, wix1001);
-        // Admin deletes a course (WIX1003) for the student2
         admin.deleteStudentCourse(student2, wix1003);
+        admin.addStudentCourse(student3, wix1003);
+
 
         System.out.println("\n[Final Course List for Students]");
         student1.displayReg();
         student2.displayReg();
+        student3.displayReg();
     }
 }
